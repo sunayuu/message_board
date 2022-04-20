@@ -4,11 +4,30 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${message != null}">
-                <h2>id : ${message.id} のメッセージ編集ページ</h2>
+                    <!-- ...（中略）... -->
 
-                <form method="POST" action="${pageContext.request.contextPath}/update">
-                    <c:import url="_form.jsp" />
-                </form>
+                <h2>id : ${message.id} のメッセージ詳細ページ</h2>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>タイトル</th>
+                            <td><c:out value="${message.title}" /></td>
+                        </tr>
+                        <tr>
+                            <th>メッセージ</th>
+                            <td><c:out value="${message.content}" /></td>
+                        </tr>
+                        <tr>
+                            <th>作成日時</th>
+                            <td><fmt:formatDate value="${message.created_at}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                        </tr>
+                        <tr>
+                            <th>更新日時</th>
+                            <td><fmt:formatDate value="${message.updated_at}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 <p><a href="${pageContext.request.contextPath}/index">一覧に戻る</a></p>
                 <p><a href="#" onclick="confirmDestroy();">このメッセージを削除する</a></p>
